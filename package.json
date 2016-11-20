@@ -1,0 +1,23 @@
+{
+  "name": "content-scraper",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node scrapeFeeds.js"
+  },
+  "dependencies": {
+    "async": "^2.1.2",
+    "body-parser": "~1.15.2",
+    "cheerio": "^0.22.0",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "express": "~4.14.0",
+    "feed-read": "0.0.1",
+    "feed-reader": "^1.1.16",
+    "jade": "~1.11.0",
+    "moment": "^2.16.0",
+    "morgan": "~1.7.0",
+    "request": "^2.78.0",
+    "serve-favicon": "~2.3.0"
+  }
+}
