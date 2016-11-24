@@ -36,7 +36,8 @@ exports.scrapeArticle = function (url, callback) {
                 "title": title,
                 "link": url,
                 "pubDate": uhrzeit,
-                "content": text.html()
+                "content": text.html(),
+                "author" : author
             };
             callback(null, result);
 
