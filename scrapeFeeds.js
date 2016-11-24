@@ -11,7 +11,8 @@ var scrapeSources = [
         channelId: "5831f3fae4b0e74dd7323b5b",
         scraper: electrek,
         feedUrl: "https://electrek.co/feed/"
-    }, {
+    }
+    , {
         channelId: "5831f411e4b0e74dd7323b5c",
         scraper: heise,
         feedUrl: "https://www.heise.de/newsticker/heise-atom.xml"

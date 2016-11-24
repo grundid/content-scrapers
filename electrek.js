@@ -13,6 +13,8 @@ exports.scrapeArticle = function (url, callback) {
             var title = article.find('h1.post-title a').text();
             var text = article.find('.post-body');
 
+            var titleImage = article.find('.feat-image-wrapper meta[itemprop="url"]').attr("content");
+            text.prepend($("<div/>").append($("<img/>").attr("src",titleImage)));
             var header = article.find('.post-meta');
 
             var timestamp = header.find('meta[itemprop="datePublished"]').attr('content');
