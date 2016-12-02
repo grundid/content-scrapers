@@ -4,7 +4,8 @@ var moment = require('moment');
 
 var demoUrl = "https://electrek.co/2016/11/19/watch-tesla-self-driving-demo-video-real-time/";
 
-exports.scrapeArticle = function (url, callback) {
+exports.scrapeArticle = function (url, db, callback) {
+
     request(url, function (error, response, body) {
         if (!error && response.statusCode == 200) {
 

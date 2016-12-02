@@ -4,7 +4,7 @@ var moment = require('moment');
 
 var url = "https://www.heise.de/newsticker/meldung/Spielkonsolenklassiker-in-4K-3488926.html";
 
-exports.scrapeArticle = function (url, callback) {
+exports.scrapeArticle = function (url, db, callback) {
     request(url, function (error, response, body) {
         if (!error && response.statusCode == 200) {
 

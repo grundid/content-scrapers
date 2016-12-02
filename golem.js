@@ -2,9 +2,10 @@ var request = require('request');
 var cheerio = require('cheerio');
 var moment = require('moment');
 
+
 var url = "http://www.golem.de/news/spionage-malware-kann-kopfhoerer-als-mikrofon-nutzen-1611-124691.html";
 
-exports.scrapeArticle = function (url, callback) {
+exports.scrapeArticle = function (url, db, callback) {
     request(url, function (error, response, body) {
         if (!error && response.statusCode == 200) {
 
