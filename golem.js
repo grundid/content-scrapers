@@ -21,6 +21,8 @@ exports.scrapeArticle = function (url, db, callback) {
             var intro = header.find("p");
             text.prepend(intro);
             text.prepend(titleImage);
+            // remove Ads
+            text.find('.text1').remove();
 
 
 

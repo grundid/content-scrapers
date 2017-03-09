@@ -35,6 +35,8 @@ exports.scrapeArticle = function (url, db, callback) {
                     img.attr('href', "https://electrek.co" + img.attr('href'));
                 }
             });
+            // remove Ads
+            text.find('.fallback-unit').remove();
 
             var result = {
                 "title": title,
