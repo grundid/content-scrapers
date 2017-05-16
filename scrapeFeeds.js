@@ -53,12 +53,13 @@ db.serialize(function () {
                                 if (error) {
                                     console.log(error);
                                 } else {
-                                    saveUrl(url);
                                     content.channelId = source.channelId;
                                     request.put({'url': 'https://api.grundid.de/rss/item', 'json': content},
                                         function (error, response, body) {
                                             if (error) {
                                                 console.log(body);
+                                            } else {
+                                                saveUrl(url);
                                             }
                                         }
                                     );
