@@ -4,6 +4,15 @@ var moment = require('moment');
 
 var demoUrl = "https://electrek.co/2016/11/19/watch-tesla-self-driving-demo-video-real-time/";
 
+function absoluteLink(link) {
+    var href = link.attr('href');
+    if (href) {
+        if (href.charAt(0) === "/" && href.charAt(1) !== "/") {
+            link.attr('href', "https://electrek.co" + href);
+        }
+    }
+}
+
 exports.scrapeArticle = function (url, db, callback) {
 
     request(url, function (error, response, body) {
@@ -24,16 +33,10 @@ exports.scrapeArticle = function (url, db, callback) {
 
             //Links absolut machen
             text.find('a').each(function () {
-                var link = $(this);
-                if (link.attr('href').charAt(0) == "/" && link.attr('href').charAt(1) != "/") {
-                    link.attr('href', "https://electrek.co" + link.attr('href'));
-                }
+                absoluteLink($(this));
             });
             text.find('a').each(function () {
-                var img = $(this);
-                if (img.attr('href').charAt(0) == "/" && img.attr('href').charAt(1) != "/") {
-                    img.attr('href', "https://electrek.co" + img.attr('href'));
-                }
+                absoluteLink($(this));
             });
             // remove Ads
             text.find('.fallback-unit').remove();
