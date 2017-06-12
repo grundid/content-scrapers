@@ -13,7 +13,7 @@ exports.scrapeArticle = function (url, db, callback) {
             var header = article.find('.article-header');
             var text = article.find('.meldung_wrapper');
 
-            var title = header.find('.news_headline').text();
+            var title = header.find('.article__heading').text();
             var publish = header.find('.publish-info');
             var uhrzeit = moment(publish.find('time').text().replace(' Uhr', ''), "DD.MM.YYYY HH:mm").format();
             var author = publish.find('.author').text();
