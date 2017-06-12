@@ -54,8 +54,10 @@ db.serialize(function () {
                                     console.log(error);
                                 } else {
                                     content.channelId = source.channelId;
+                                    console.log("sending: ", content);
                                     request.put({'url': 'https://api.grundid.de/rss/item', 'json': content},
                                         function (error, response, body) {
+                                            console.log("Body: ", body);
                                             if (error) {
                                                 console.log(body);
                                             } else {
