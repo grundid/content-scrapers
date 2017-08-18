@@ -42,7 +42,7 @@ function parseCt(body, url) {
     const $ = cheerio.load(body);
 
     const article = $('.article_page section');
-    const intro = article.find('.article_page_intro').html();
+    const intro = article.find('.article_page_intro');
 
 
     const title = article.find('.article_page_title').text();
