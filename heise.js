@@ -42,27 +42,31 @@ function parseCt(body, url) {
     const $ = cheerio.load(body);
 
     const article = $('.article_page section');
-    const text = article.find('.article_page_intro').html() + article.find('.article_page_text').html();
+    const intro = article.find('.article_page_intro').html();
+
 
     const title = article.find('.article_page_title').text();
 
     const uhrzeit = article.find('.article_page_info_date time').attr("datetime");
     const author = article.find('.article_page_info_author a').text();
 
+    const content = article.find('.article_page_text');
+
     //Links absolut machen
-    text.find('a').each(function () {
+    content.find('a').each(function () {
         const link = $(this);
         if (link.attr('href').charAt(0) === "/" && link.attr('href').charAt(1) !== "/") {
             link.attr('href', "https://heise.de" + link.attr('href'));
         }
     });
-    text.find('a').each(function () {
+    content.find('a').each(function () {
         const img = $(this);
         if (img.attr('href').charAt(0) === "/" && img.attr('href').charAt(1) !== "/") {
             img.attr('href', "https://heise.de" + img.attr('href'));
         }
     });
 
+    const text = intro.html() + content.html();
     return {
         "title": title,
         "link": url,
