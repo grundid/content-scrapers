@@ -11,12 +11,12 @@ exports.scrapeArticle = function (url, db, callback) {
             var $ = cheerio.load(body);
             var article = $('article');
             var header = article.find('.article-header');
-            var text = article.find('.meldung_wrapper');
+            var text = article.find('.article-content');
 
             var title = header.find('.article__heading').text();
             var publish = header.find('.publish-info');
-            var uhrzeit = moment(publish.find('time').text().replace(' Uhr', ''), "DD.MM.YYYY HH:mm").format();
-            var author = publish.find('.author').text();
+            var uhrzeit = publish.find('time').attr("datetime");
+            var author = publish.find('.publish-info__author').text();
 
             //Links absolut machen
             text.find('a').each(function () {
