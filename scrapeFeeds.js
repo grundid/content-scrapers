@@ -51,15 +51,14 @@ db.serialize(function () {
                             console.log("Unknown url, scraping article... [" + url + "]");
                             source.scraper.scrapeArticle(url, db, function (error, content) {
                                 if (error) {
-                                    console.log(error);
+                                    console.log("Error: ",error);
                                 } else {
                                     content.channelId = source.channelId;
                                     console.log("sending: ", content);
                                     request.put({'url': 'https://api.grundid.de/rss/item', 'json': content},
                                         function (error, response, body) {
-                                            console.log("response: ", response);
                                             if (error || response.statusCode !== 200) {
-                                                console.log(body);
+                                                console.log("error: ",body);
                                             } else {
                                                 saveUrl(url);
                                             }
