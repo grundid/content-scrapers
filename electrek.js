@@ -40,6 +40,13 @@ exports.scrapeArticle = function (url, db, callback) {
             });
             // remove Ads
             text.find('.fallback-unit').remove();
+            text.find('img').each(function () {
+                var img = $(this);
+                var url = img.attr('href');
+                if (url.indexOf("solar") !== -1 && url.indexOf("-300.jpg") !== -1) {
+                    img.remove();
+                }
+            });
 
             var result = {
                 "title": title,
