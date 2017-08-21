@@ -42,7 +42,7 @@ exports.scrapeArticle = function (url, db, callback) {
             text.find('.fallback-unit').remove();
             text.find('img').each(function () {
                 var img = $(this);
-                var url = img.attr('href');
+                var url = img.attr('src');
                 if (url && url.indexOf("solar") !== -1 && url.indexOf("-300.jpg") !== -1) {
                     img.remove();
                 }

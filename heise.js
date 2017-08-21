@@ -44,7 +44,6 @@ function parseCt(body, url) {
     const article = $('.article_page section');
     const intro = article.find('.article_page_intro');
 
-
     const title = article.find('.article_page_title').text();
 
     const uhrzeit = article.find('.article_page_info_date time').attr("datetime");
