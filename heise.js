@@ -8,12 +8,13 @@ function parseBase(body, url) {
     const $ = cheerio.load(body);
     const article = $('article');
     const header = article.find('.article-header');
-    const text = article.find('.article-content');
 
     const title = header.find('.article__heading').text();
     const publish = header.find('.publish-info');
     const uhrzeit = publish.find('time').attr("datetime");
-    const author = publish.find('.publish-info__author').text();
+    const author = publish.find('.author').text();
+
+    const text = article.find('.meldung_wrapper');
 
     //Links absolut machen
     text.find('a').each(function () {
