@@ -106,6 +106,7 @@ exports.scrapeArticle = function (url, db, callback) {
             } else if (url.indexOf("heise.de/ix")) {
                 const result = parseIx(body, url);
                 callback(null, result);
+            }
         } else {
             console.log("could not connect to the host " + error);
             callback(error, null);
