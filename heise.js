@@ -80,9 +80,9 @@ function parseCt(body, url) {
 
     const content = article.find('.article_page_text');
 
-    const text = intro.html() + content.html();
+    makeLinksAbsolute(content);
 
-    makeLinksAbsolute(text);
+    const text = intro.html() + content.html();
     return {
         "title": title,
         "link": url,
