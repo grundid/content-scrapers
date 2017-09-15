@@ -4,16 +4,16 @@ const moment = require('moment');
 
 const demourl = "https://www.heise.de/newsticker/meldung/Spielkonsolenklassiker-in-4K-3488926.html";
 
-function makeLinksAbsolute(text) {
+function makeLinksAbsolute(text, cheerio) {
     //Links absolut machen
     text.find('a').each(function () {
-        const link = $(this);
+        const link = cheerio(this);
         if (link.attr('href').charAt(0) === "/" && link.attr('href').charAt(1) !== "/") {
             link.attr('href', "https://heise.de" + link.attr('href'));
         }
     });
     text.find('a').each(function () {
-        const img = $(this);
+        const img = cheerio(this);
         if (img.attr('href').charAt(0) === "/" && img.attr('href').charAt(1) !== "/") {
             img.attr('href', "https://heise.de" + img.attr('href'));
         }
@@ -33,7 +33,7 @@ function parseBase(body, url) {
 
     const text = article.find('.meldung_wrapper');
 
-    makeLinksAbsolute(text);
+    makeLinksAbsolute(text, $);
 
     return {
         "title": title,
@@ -56,7 +56,7 @@ function parseIx(body, url) {
 
     const text = article.find('.meldung_wrapper');
 
-    makeLinksAbsolute(text);
+    makeLinksAbsolute(text, $);
 
     return {
         "title": title,
@@ -80,7 +80,7 @@ function parseCt(body, url) {
 
     const content = article.find('.article_page_text');
 
-    makeLinksAbsolute(content);
+    makeLinksAbsolute(content, $);
 
     const text = intro.html() + content.html();
     return {
