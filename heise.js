@@ -80,9 +80,9 @@ function parseCt(body, url) {
 
     const content = article.find('.article_page_text');
 
-    makeLinksAbsolute(text);
-
     const text = intro.html() + content.html();
+
+    makeLinksAbsolute(text);
     return {
         "title": title,
         "link": url,
@@ -90,7 +90,6 @@ function parseCt(body, url) {
         "content": text,
         "author": author
     };
-
 }
 
 exports.scrapeArticle = function (url, db, callback) {
