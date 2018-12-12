@@ -13,7 +13,7 @@ function absoluteLink(link) {
     }
 }
 
-exports.scrapeArticle = function (url, db, callback) {
+exports.scrapeArticle = function (url, callback) {
 
     request(url, function (error, response, body) {
         if (!error && response.statusCode == 200) {
